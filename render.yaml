@@ -1,4 +1,16 @@
 services:
+  # React Frontend Static Site
+  - type: web
+    name: ai-college-admission-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
   # Node.js Express REST Backend Service
   - type: web
     name: ai-college-admission-backend
